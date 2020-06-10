@@ -1,0 +1,38 @@
+function quickSort(array) {
+  // change code below this line
+
+var less=[];
+var more=[];
+if (array.length>1){
+  var pivot=array.pop();
+  console.log("pivot is "+pivot);
+  for(let x=0; x<array.length; x++){
+    if(array[x]<pivot){
+      less.push(array[x]);
+    }
+   else more.push(array[x]);
+  }
+  less=quickSort(less); // recursion-call itself
+  more=quickSort(more); // to sort both sub arrays
+  // put together array
+  less.concat(pivot,more);
+  //array=less;
+  console.log("Line 21"+array);
+  //array=quickSort(array);
+  //quickSort(more);
+}
+else return array;
+  var temp=[];
+  less=less.concat(pivot,more);
+   temp.push(less);
+  //temp.push(pivot);
+  //temp.push(more);
+  array=temp;
+  console.log("final array = "+array);
+ 
+  // change code above this line
+  return array;
+}
+
+// test array:
+// [1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]

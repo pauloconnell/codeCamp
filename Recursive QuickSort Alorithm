@@ -1,0 +1,28 @@
+function quickSort(array) {
+  // change code below this line
+var pivot=array[(array.length-1)]; // select last element
+console.log(pivot+array);
+var pivotLocation=(array.length-1);
+var index=array.length-1;       // index of last element
+console.log(pivot+pivotLocation+"line 5");
+for(var x=index; x>0; x--){
+  if(array[x-1]>array[pivotLocation])
+
+    {array[x-1],array[pivot]=array[pivot], array[x-1]}; //swap values
+    pivotLocation=x-1;  //save new location of our pivot
+
+}
+// sorted so lets find our pivot and sort again
+console.log(pivot+pivotLocation+"line 14");
+//let y=array.indexOf(pivot);
+
+var arr2=array.splice(pivot,(array.length-y));
+console.log(pivot+"arr2 is "+arr2);
+array.concat(quickSort(array), quickSort(arr2));
+
+  // change code above this line
+  return array;
+}
+
+// test array:
+// [1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]

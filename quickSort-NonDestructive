@@ -1,0 +1,118 @@
+
+
+//saving while doing update-not currently passing test
+
+
+function quickSort(array) {
+  // change code below this line
+var pivotLocation=0;
+
+var pivot=array[pivotLocation];
+
+var rightIndex=array.length-1;       // index of last element
+//var left=1; //left pointer  next to pivot
+console.log(pivot+"line 5");
+var noChange=true;
+
+
+//function declarations
+
+// find left
+function left() {
+
+ 
+  let foundL=false;
+  let foundIndex;
+  for(var x=1; x<array.length; x++){
+     console.log("line 22 "+array[x]+" "+pivotLocation+" "+array[pivotLocation]);
+  if(array[x]>array[pivotLocation]){
+    console.log("lefty found "+array[x]+" > "+array[pivotLocation]);
+    //left=x;
+    foundIndex=x;    //save where this number is
+    //x=pivotLocation; // exit loop
+    foundL=true;
+    right(foundIndex);
+//   / [array[x-1],array[pivotLocation]=array[pivotLocation], array[x-1]]; //swap values
+//    pivotLocation=x-1;  //save new location of our pivot
+   
+  }
+  //else foundIndex=foundL;  // sends false if not found
+}
+if (foundL){
+  console.log(" found left");
+}
+
+ return foundIndex;
+}
+// find right
+function right(left){
+let foundR=false;
+ 
+//let right=array.length-1;
+console.log(left+" is left index& right at index "+rightIndex);
+    for(rightIndex; rightIndex>left; rightIndex--){
+      console.log("in right at index "+rightIndex);
+      if (rightIndex == left){ //no right found
+        if(!foundL){    // if no left found done
+          return array; // sorted and finished
+        }
+        [array[pivotLocation],array[left]=array[left], array[pivotLocation]]; //Else swap
+        quickSort(array);
+      }
+      console.log("right is "+array[rightIndex]);
+      if(array[rightIndex]<=pivot){
+        console.log(array[rightIndex]+" right found now swapping with ="+array[left]+"and num ="+array[rightIndex]);
+        console.log(array);
+        [array[rightIndex], array[left]]=[array[left], array[rightIndex]];
+        console.log(array);
+        foundR=true;
+        noChange=false;
+        rightIndex++; // check location again
+       // quickSort(array); // reSort the array
+        //right=pivotLocation+1;  // endloop
+      }
+      else{   // means array[rightIndex]>=pivot
+
+      }
+    }
+    
+  return foundR;
+  }
+  console.log("calling left");
+
+var leftIndex=left(); //returns left index of potential swap
+var rightIndex=null; 
+if(leftIndex){
+  console.log("calling rightSearch");
+  rightSearch=right(leftIndex);  //search for right index to swap with
+  if(rightSearch){ //means right found and swap occurred
+    quickSort(array);
+    console.log("next loop through");
+  }
+  else{       // if left found but no right found
+   [array[pivotLocation], array[left]]=[array[left], array[pivotLocation]];           //swap pivot with leftindex
+   quickSort(array);  //should find a new pivot
+  }
+
+  }   
+  else{ //ie. no left, but search for right
+    rightSearch=right(pivotLocation);   // will search and swap with pivot location
+    if (rightSearch){
+      quickSort(array);   // do another sort after swap
+    }
+  } 
+  
+// sorted so lets find our pivot and sort again
+console.log(pivot+pivotLocation+"line 65");
+//let y=array.indexOf(pivot);
+
+//let arr2=array.splice(pivot,pivotLocation);
+//console.log(pivot+"arr2 is "+arr2);
+//array.concat(quickSort(array), quickSort(arr2));
+
+  // change code above this line
+  return array;
+}
+
+// test array:
+// [1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]

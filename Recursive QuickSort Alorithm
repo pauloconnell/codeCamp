@@ -14,7 +14,7 @@ for(var x=index; x>0; x--){
 }
 // sorted so lets find our pivot and sort again
 console.log(pivot+pivotLocation+"line 14");
-//let y=array.indexOf(pivot);
+let y=array.indexOf(pivot);
 
 var arr2=array.splice(pivot,(array.length-y));
 console.log(pivot+"arr2 is "+arr2);
